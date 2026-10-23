@@ -1,0 +1,2 @@
+timestamp,heart_rate,systolic_bp,diastolic_bp,spo2,respiratory_rate,body_temp_c,hrv_ms,steps
+2026-10-20T00:00:00Z,70,120,80,98.0,16,36.8,45,0

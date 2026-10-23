@@ -1,0 +1,6 @@
+{
+  "name": "Predictive Patient Digital Twin",
+  "description": "Intelligent healthcare digital twin combining wearable telemetry, patient-specific baselines, ML anomaly detection, what-if scenario simulations, and clinician/patient dashboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
