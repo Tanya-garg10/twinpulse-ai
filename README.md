@@ -56,7 +56,7 @@ Patient-specific computational baseline across 7 biometric dimensions:
 ## Architecture
 
 ### Architecture Diagram
-[![Architecture Diagram](https://drive.google.com/file/d/1Z8JtQoHPKHdrWMAe9Mx5_pb9zbD0QVfb/view?usp=drive_link)](https://drive.google.com/file/d/1Z8JtQoHPKHdrWMAe9Mx5_pb9zbD0QVfb/view?usp=drive_link)
+[Architecture Diagram](https://drive.google.com/file/d/1Z8JtQoHPKHdrWMAe9Mx5_pb9zbD0QVfb/view?usp=drive_link)
 
 ### Data Flow
 ```
