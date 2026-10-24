@@ -2,20 +2,13 @@
 
 **TwinPulse AI** is a healthcare platform that turns continuous wearable telemetry into personal baselines, explainable anomaly detection, and interactive what-if scenario simulations.
 
----
-
 ## Team Details
-- **Team Name:** Predictive Twin AI
-- **Track:** Happiest Health Digital Twin Challenge 2026
-- **Affiliation:** Healthcare Technology & AI Systems Lab
+- **Team Name:** Team Scholar
 - **Team Members:**
-  - Member 1
-  - Member 2
-  - Member 3
-  - Member 4
-- **Presentation:** [View Presentation](https://drive.google.com/file/d/18QnPIzqeQZ00pSkswNxt9w2xyo1BiiYe/view?usp=drive_link)
+  - Tanya Garg
+  - Aman Singh
 
----
+## Presentation: [View Presentation](https://drive.google.com/file/d/18QnPIzqeQZ00pSkswNxt9w2xyo1BiiYe/view?usp=drive_link)
 
 ## Problem Statement
 
@@ -24,16 +17,12 @@ Chronic cardiorespiratory conditions and post-operative recovery present subtle 
 2. **Lack of Explainability:** Black-box alerts without attribution
 3. **No Prospective Simulation:** Cannot explore lifestyle adjustments proactively
 
----
-
 ## Solution
 
 ### The Digital Twin Solution
 Patient-specific computational baseline across 7 biometric dimensions:
 - Heart Rate, Blood Pressure, SpO₂, Respiratory Rate
 - Body Temperature, HRV, Physical Activity & Sleep
-
----
 
 ## Features
 
@@ -64,15 +53,10 @@ Patient-specific computational baseline across 7 biometric dimensions:
 - Clinician surveillance portal with multi-patient triage
 - Patient health companion with wellness index
 
----
-
 ## Architecture
 
 ### Architecture Diagram
 [![Architecture Diagram](https://drive.google.com/file/d/1Z8JtQoHPKHdrWMAe9Mx5_pb9zbD0QVfb/view?usp=drive_link)](https://drive.google.com/file/d/1Z8JtQoHPKHdrWMAe9Mx5_pb9zbD0QVfb/view?usp=drive_link)
-
-### Presentation Slides
-[View Full Presentation](https://drive.google.com/file/d/18QnPIzqeQZ00pSkswNxt9w2xyo1BiiYe/view?usp=drive_link)
 
 ### Data Flow
 ```
@@ -84,8 +68,6 @@ Multivariate ML Pipeline (Isolation Forest, Physiological Couplings)
            ↓
 Dual Role Interface Layer (Clinician & Patient Views)
 ```
-
----
 
 ## File Structure
 ```
@@ -134,8 +116,6 @@ Dual Role Interface Layer (Clinician & Patient Views)
             └── TelemetryChart.tsx      # Telemetry charts
 ```
 
----
-
 ## Tech Stack
 
 ### Frontend
@@ -150,8 +130,6 @@ Dual Role Interface Layer (Clinician & Patient Views)
 - **NumPy & Pandas** for data processing
 - **Scikit-Learn** for Isolation Forest anomaly detection
 - **Pytest** for testing
-
----
 
 ## Installation
 
@@ -185,8 +163,6 @@ python3 ml_pipeline/synthetic_generator.py
 python3 ml_pipeline/test_pipeline.py
 ```
 
----
-
 ## Usage
 
 After starting the development server with `npm run dev`, navigate to http://localhost:3000. The application includes:
@@ -205,13 +181,9 @@ After starting the development server with `npm run dev`, navigate to http://loc
 3. **Dr. Sarah Chen (64, Female)** — Moderate Risk: Type 2 Diabetes & Hypertension
 4. **David Kim (29, Male)** — Low Risk: Athletic Endurance Baseline
 
----
-
 ## Demonstration Video
 
 Unlisted YouTube Walkthrough: `https://youtube.com/watch?v=PENDING_CHALLENGE_UPLOAD`
-
----
 
 ## Model Explanation
 
@@ -238,8 +210,6 @@ Unlisted YouTube Walkthrough: `https://youtube.com/watch?v=PENDING_CHALLENGE_UPL
 - Multivariate physiological coupling captures subtle decompensation patterns missed by univariate monitoring
 - Synthetic data enables rapid prototyping while maintaining ethical compliance
 
----
-
 ## Future Scope
 
 - Multi-lead ECG waveform integration
@@ -247,19 +217,13 @@ Unlisted YouTube Walkthrough: `https://youtube.com/watch?v=PENDING_CHALLENGE_UPL
 - Federated learning across hospital EHR networks for cohort transfer learning
 - Real-time wearable API integration (Apple Health, Google Fit, Garmin)
 
----
-
 ## Disclaimer
 
 **Research Prototype** — Built for the Happiest Health Digital Twin Challenge 2026. Not a diagnostic tool. All patient data is synthetic.
 
----
-
 ## License
 
 MIT License — see [LICENSE](LICENSE) file for details.
-
----
 
 ## References
 
