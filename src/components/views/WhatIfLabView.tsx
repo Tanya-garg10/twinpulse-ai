@@ -18,7 +18,10 @@ import {
   Info,
   Clock,
   ArrowRight,
+  Sparkles,
+  RefreshCw,
 } from 'lucide-react';
+import { analyzeWhatIfWithFeatherless, getFeatherlessModel } from '../../services/featherlessService';
 
 interface WhatIfLabViewProps {
   patient: DemoPatient;
@@ -40,9 +43,23 @@ export const WhatIfLabView: React.FC<WhatIfLabViewProps> = ({
 
   const [params, setParams] = useState<WhatIfParameters>(defaultParams);
   const [selectedMetric, setSelectedMetric] = useState<'heartRate' | 'systolicBP' | 'spO2'>('heartRate');
+  const [aiPrognosis, setAiPrognosis] = useState<string | null>(null);
+  const [isGeneratingPrognosis, setIsGeneratingPrognosis] = useState<boolean>(false);
 
   // Compute simulation result via mlEngine
   const simulation: SimulationResult = runWhatIfSimulation(currentReading, patient.baseline, params);
+
+  const handleGeneratePrognosis = async () => {
+    setIsGeneratingPrognosis(true);
+    try {
+      const text = await analyzeWhatIfWithFeatherless(patient, params, simulation);
+      setAiPrognosis(text);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsGeneratingPrognosis(false);
+    }
+  };
 
   const presets = [
     {
@@ -440,6 +457,47 @@ export const WhatIfLabView: React.FC<WhatIfLabViewProps> = ({
             <p className="text-[11px] text-[#77838D] leading-relaxed">
               {simulation.physiologicalInsights.join(' ')}
             </p>
+          </div>
+
+          {/* Featherless AI Prognosis Section */}
+          <div className="p-4 rounded-xl border border-[#c4e3d7] bg-gradient-to-r from-[#E6F2ED]/60 to-white space-y-2 text-xs">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-[#27866F]">
+                <Sparkles className="w-4 h-4" />
+                <span>Featherless AI Clinical Prognosis</span>
+                <span className="text-[10px] font-mono font-normal text-[#77838D]">
+                  ({getFeatherlessModel()})
+                </span>
+              </div>
+
+              <button
+                onClick={handleGeneratePrognosis}
+                disabled={isGeneratingPrognosis}
+                className="px-2.5 py-1 rounded-md bg-[#27866F] hover:bg-[#1f6d5a] text-white text-[11px] font-semibold flex items-center gap-1 transition-colors disabled:opacity-50"
+              >
+                {isGeneratingPrognosis ? (
+                  <>
+                    <RefreshCw className="w-3 h-3 animate-spin" />
+                    <span>Evaluating...</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-3 h-3" />
+                    <span>{aiPrognosis ? 'Re-Evaluate' : 'Generate AI Prognosis'}</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {aiPrognosis ? (
+              <p className="text-[11px] text-[#202B33] leading-relaxed whitespace-pre-line bg-white/80 p-3 rounded-lg border border-[#d5e9e0]">
+                {aiPrognosis}
+              </p>
+            ) : (
+              <p className="text-[11px] text-[#77838D]">
+                Generate an LLM clinical interpretation of this hypothetical 24-hour physiological trajectory using Featherless open-weight models.
+              </p>
+            )}
           </div>
         </div>
       </div>

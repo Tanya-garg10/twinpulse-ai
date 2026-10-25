@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DemoPatient, PatientAlert } from '../../types/health';
+import { DemoPatient, PatientAlert, VitalReading } from '../../types/health';
 import {
   Sparkles,
   ShieldAlert,
@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Info,
 } from 'lucide-react';
+import { FeatherlessModal } from '../FeatherlessModal';
 
 interface InsightsViewProps {
   patient: DemoPatient;
@@ -28,8 +29,13 @@ export const InsightsView: React.FC<InsightsViewProps> = ({
 }) => {
   const [selectedSeverity, setSelectedSeverity] = useState<string>('ALL');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [activeAlertForModal, setActiveAlertForModal] = useState<PatientAlert | null>(null);
+  const [showFeatherlessModal, setShowFeatherlessModal] = useState<boolean>(false);
 
   const report = patient.latestAnomalyReport;
+  const currentReading: VitalReading =
+    patient.historicalReadings[patient.historicalReadings.length - 1] ||
+    patient.recentTelemetry[patient.recentTelemetry.length - 1];
   const patientAlerts = alerts.filter((a) => a.patientId === patient.id || selectedSeverity === 'ALL');
 
   const filteredAlerts = patientAlerts.filter((a) => {
@@ -112,6 +118,18 @@ export const InsightsView: React.FC<InsightsViewProps> = ({
                 {report ? report.anomalyScore.toFixed(2) : '0.18'} / 1.00
               </span>
             </div>
+            <div className="h-6 w-px bg-[#E8EDEB]" />
+            <button
+              onClick={() => {
+                setActiveAlertForModal(null);
+                setShowFeatherlessModal(true);
+              }}
+              className="px-3 py-1.5 rounded-lg bg-[#E6F2ED] hover:bg-[#d2e8de] text-[#27866F] font-semibold text-xs flex items-center gap-1.5 transition-colors border border-[#c4e3d7]"
+              title="Launch Featherless AI open-weight clinical copilot"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Featherless Copilot</span>
+            </button>
           </div>
         </div>
 
@@ -211,8 +229,21 @@ export const InsightsView: React.FC<InsightsViewProps> = ({
                       </p>
                     </div>
 
-                    {/* Acknowledge / Resolve action buttons */}
-                    <div className="flex items-center justify-end gap-2 pt-1">
+                    {/* Acknowledge / Resolve / Featherless action buttons */}
+                    <div className="flex items-center justify-end gap-2 pt-1 flex-wrap">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveAlertForModal(alert);
+                          setShowFeatherlessModal(true);
+                        }}
+                        className="px-3 py-1.5 rounded-lg border border-[#c4e3d7] bg-[#E6F2ED] hover:bg-[#d4ece0] text-xs font-semibold text-[#27866F] flex items-center gap-1.5 transition-colors"
+                        title="Analyze alert with Featherless AI open-weight models"
+                      >
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>Featherless Reasoning</span>
+                      </button>
+
                       {alert.status === 'active' && onAcknowledgeAlert && (
                         <button
                           onClick={(e) => {
@@ -250,6 +281,15 @@ export const InsightsView: React.FC<InsightsViewProps> = ({
           </div>
         )}
       </div>
+
+      {/* Featherless AI Copilot Modal */}
+      <FeatherlessModal
+        isOpen={showFeatherlessModal}
+        onClose={() => setShowFeatherlessModal(false)}
+        patient={patient}
+        reading={currentReading}
+        alert={activeAlertForModal || undefined}
+      />
     </div>
   );
 };

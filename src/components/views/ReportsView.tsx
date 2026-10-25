@@ -36,7 +36,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* 1. Header */}
-      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-1">
+      <div data-no-print className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-1">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#202B33]">
             Clinical Reports
@@ -56,7 +56,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({
       </div>
 
       {/* 2. Standardized Document Container (Printable Paper Style) */}
-      <div className="bg-white p-6 sm:p-8 rounded-xl border border-[#E8EDEB] shadow-soft space-y-6 max-w-4xl mx-auto print:shadow-none print:border-none print:p-0">
+      <div id="report-printable" className="bg-white p-6 sm:p-8 rounded-xl border border-[#E8EDEB] shadow-soft space-y-6 max-w-4xl mx-auto print:shadow-none print:border-none print:p-0">
         {/* Document Header */}
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-[#E8EDEB]">
           <div>
