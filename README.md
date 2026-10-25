@@ -183,7 +183,7 @@ After starting the development server with `npm run dev`, navigate to http://loc
 
 ## Demonstration Video
 
-Unlisted YouTube Walkthrough: `https://youtube.com/watch?v=PENDING_CHALLENGE_UPLOAD`
+Unlisted YouTube Walkthrough: https://youtu.be/982e3SLR8Uw
 
 ## Model Explanation
 
